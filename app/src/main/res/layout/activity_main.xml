@@ -13,8 +13,9 @@
         android:id="@+id/editTextTextPersonName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
         android:hint="Your Name"
+        android:hintTextColor="#78909C"
+        android:inputType="textPersonName"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -69,18 +70,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextDate">
 
-    <RadioButton
-        android:id="@+id/option_female"
-        android:checked="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Female" />
+        <RadioButton
+            android:id="@+id/option_female"
+            android:checked="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female" />
 
-    <RadioButton
-        android:id="@+id/option_male"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Male" />
+        <RadioButton
+            android:id="@+id/option_male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male" />
 
     </RadioGroup>
     <Button
@@ -92,13 +93,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="NotSibling,UnknownId" />
+
+
+
     <TextView
         android:id="@+id/result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="registration_info"
+        android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button"
-        />
+        app:layout_constraintTop_toBottomOf="@id/button" />
+
+    <TextView
+        android:id="@+id/result2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/result" />
+
+    <TextView
+        android:id="@+id/result3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/result2" />
+
+    <TextView
+        android:id="@+id/result4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gender"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/result3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

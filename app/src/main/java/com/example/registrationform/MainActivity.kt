@@ -2,7 +2,6 @@ package com.example.registrationform
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.registrationform.databinding.ActivityMainBinding
@@ -19,62 +18,78 @@ class MainActivity : AppCompatActivity() {
             if (check) {
                 printInfo()
             }
-
-
         }
     }
 
     private fun validateInputs(): Boolean {
-        if (binding.editTextTextPersonName.toString().isEmpty()) {
+
+
+        if (binding.editTextTextPersonName.getText().toString().isEmpty()) {
             Toast.makeText(this, "Please Enter your name", Toast.LENGTH_SHORT).show()
             return false
-        }
+        } else {
+            if (binding.editTextTextEmailAddress.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Please Enter your E-mail", Toast.LENGTH_SHORT).show()
+                return false
+            } else {
+                if (binding.editTextDate.getText().toString().isEmpty()) {
+                    Toast.makeText(this, "Please Enter your birth date", Toast.LENGTH_SHORT).show()
+                    return false
+                } else {
+                    if (binding.ginderOptions.toString().isEmpty()) {
+                        Toast.makeText(this, "Please select your gender", Toast.LENGTH_SHORT).show()
+                        return false
+                    } else {
+                        if (binding.editTextTextPassword.getText().toString().isEmpty()) {
+                            Toast.makeText(this, "Please select your Password", Toast.LENGTH_SHORT)
+                                .show()
+                            return false
 
-        if (binding.editTextTextEmailAddress.toString().isEmpty()) {
-            Toast.makeText(this, "Please Enter your E-mail", Toast.LENGTH_SHORT).show()
-            return false
-        }
+                        } else {
+                            if (binding.editTextTextPassword2.getText().toString().isEmpty()) {
+                                Toast.makeText(
+                                    this,
+                                    "Please repeat your Password",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                return false
+                            } else {
+                                return if (binding.editTextTextPassword.getText()
+                                        .toString() != binding.editTextTextPassword2.getText()
+                                        .toString()
+                                ) {
+                                    Toast.makeText(
+                                        this,
+                                        "Password is not Maching",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    false
 
-        if (binding.editTextDate.toString().isEmpty()) {
-            Toast.makeText(this, "Please Enter your birth date", Toast.LENGTH_SHORT).show()
-            return false
+                                } else {
+                                    true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-
-
-        if (binding.ginderOptions.toString().isEmpty()) {
-            Toast.makeText(this, "Please select your gender", Toast.LENGTH_SHORT).show()
-            return false
-        }
-        if (binding.editTextTextPassword.toString().isEmpty()) {
-            Toast.makeText(this, "Please select your Password", Toast.LENGTH_SHORT).show()
-            return false
-
-        }
-        if (binding.editTextTextPassword2.toString().isEmpty()) {
-            Toast.makeText(this, "Please repeat your Password", Toast.LENGTH_SHORT).show()
-            return false
-        }
-
-        if (binding.editTextTextPassword.toString()
-                .equals(binding.editTextTextPassword2.toString())
-        ) {
-            Toast.makeText(this, "Password is not Maching", Toast.LENGTH_SHORT).show()
-            return false
-
-        }
-        return true
     }
+
 
     @SuppressLint("StringFormatInvalid")
     fun printInfo() {
-        binding.result.text=getString(R.string.registration_info,binding.editTextTextPersonName.toString())
+        binding.result.text = "${binding.editTextTextPersonName.text}"
+        binding.result2.text = "${binding.editTextTextEmailAddress.text}"
+        binding.result3.text = "${binding.editTextTextPassword.text}"
+        binding.result4.text = when (binding.ginderOptions.checkedRadioButtonId) {
+            R.id.option_female -> "female"
+            else -> "male"
+        }
     }
-
-//    @SuppressLint("StringFormatInvalid")
-//    fun printInfo() {
-//        var info = binding.editTextTextPersonName
-//        binding.result.text = getString(R.string.registration_info,info)
-//    }
-
-
 }
+
+
+
+
+
